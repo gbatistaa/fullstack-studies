@@ -33,10 +33,6 @@ This repository features a variety of technologies used in the fullstack develop
 
 ## Projects
 
-Here are some of the key projects you will find in this repository:
-
-## Projects
-
 Here are some of the key projects i developed using the tecnologies i learnt in the courses :
 
 1. [**Entertainment App**](https://github.com/gbatistaa/entertainment-app): A web application for exploring and bookmarking entertainment content such as movies and TV shows.
