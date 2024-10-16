@@ -27,7 +27,7 @@ Feel free to explore, learn, or use the code in your own projects!
 This repository features a variety of technologies used in the fullstack development process. Here are some of the major tools and languages:
 
 - **Frontend**: HTML, CSS, JavaScript, React
-- **Backend**: Node.js, Express.js, MongoDB, MySQL, PostgreSQL
+- **Backend**: Node.js, C#, .NET, MySQL, PostgreSQL (not yet)
 - **Version Control**: Git, GitHub
 - **Other Tools**: None (yet)
 
