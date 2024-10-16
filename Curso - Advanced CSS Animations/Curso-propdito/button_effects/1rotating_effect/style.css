@@ -1,0 +1,44 @@
+* {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ESTILIZAÇAO DO BOTÃO 1 */
+
+a {
+    color: #272727;
+    font-size: 45px;
+    border: 5px solid #272727;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff200;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transform-origin: 0% 0%;
+    transform: rotate(-90deg);
+    transition: 1s;
+}
+
+a:hover::before {
+    transform: rotate(0deg);
+}

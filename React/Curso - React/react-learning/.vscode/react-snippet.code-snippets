@@ -1,0 +1,11 @@
+{
+
+	"Print to console": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "iue",
+		"body": [
+			"import { useEffect } from 'react';",
+		],
+		"description": "Log output to console"
+	}, 
+}

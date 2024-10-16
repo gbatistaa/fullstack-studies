@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    column-gap: 5px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes anima {
+    from {
+        background-color: purple;
+        height: 0px;
+    }
+    to {
+        background-color: blue;
+        height: 280px;
+    }
+}
+
+.caixas{
+    height: 70px;
+    width: 70px;
+    background-color: rgb(31, 150, 205);
+    visibility: visible;
+}
+#animation{
+    position: absolute;
+    bottom: 80%;
+    width: 90px;
+    height: 60px;
+}
+
+#aux{ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    height: auto;
+    width: auto;
+    background-color: green;
+}
+
+#slice{
+    transform: rotate(45deg);
+    background-color: brown;
+    position: absolute;
+    width: 5px;
+    height: 0px;
+}
+
+#circle{
+    height: 200px;
+    width: 200px;
+    background-color: darkblue;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
