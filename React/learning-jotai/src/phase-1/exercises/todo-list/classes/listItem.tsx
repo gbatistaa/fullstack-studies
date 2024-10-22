@@ -1,11 +1,6 @@
 class ListItem {
-  public itemText: string;
-  public status: boolean;
-
-  constructor(itemText: string, status: boolean) {
-    this.itemText = itemText;
-    this.status = status;
-  }
+  public itemText: string = "New todo";
+  public status: boolean = false;
 }
 
 export default ListItem;
