@@ -7,8 +7,18 @@ function Item({ index }: { index: number }): JSX.Element {
 
   const updateItemText = (itemKey: number, newText: string): void => {
     setList((prevList) => {
-      return prevList.map((itemList, i) => {
-        return itemKey == i ? { ...itemList, itemText: newText } : itemList;
+      return prevList.map((itemList, idx) => {
+        return itemKey == idx ? { ...itemList, itemText: newText } : itemList;
+      });
+    });
+  };
+
+  const updateItemStatus = (itemKey: number, checkboxValue: boolean): void => {
+    setList((prevList) => {
+      return prevList.map((itemList, idx) => {
+        return itemKey == idx
+          ? { ...itemList, status: checkboxValue }
+          : itemList;
       });
     });
   };
@@ -16,14 +26,20 @@ function Item({ index }: { index: number }): JSX.Element {
 
   return (
     <>
-      <h1>{list[index].itemText}</h1>
+      <h3>{list[index].itemText}</h3>
+      <h4>{list[index].status ? "Completed" : "Not Completed"}</h4>
       <div className={styles.itemContainer}>
         <input
           type="text"
           onChange={(e) => updateItemText(index, e.target.value)}
         />
         <div className={styles.checkboxContainer}>
-          <input type="checkbox" name="completed" id="completed" />
+          <input
+            type="checkbox"
+            name="completed"
+            id="completed"
+            onChange={(e) => updateItemStatus(index, e.target.checked)}
+          />
         </div>
       </div>
     </>
