@@ -1,9 +1,8 @@
-type Status = "completed" | "in progress" | "not done";
 class ListItem {
   public itemText: string;
-  public status: Status;
+  public status: boolean;
 
-  constructor(itemText: string, status: Status) {
+  constructor(itemText: string, status: boolean) {
     this.itemText = itemText;
     this.status = status;
   }
