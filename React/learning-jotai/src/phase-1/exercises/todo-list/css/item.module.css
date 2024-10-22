@@ -1,0 +1,9 @@
+div.itemContainer {
+  display: flex;
+  width: fit-content;
+}
+
+div.checkboxContainer {
+  width: fit-content;
+  height: fit-content;
+}
