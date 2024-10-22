@@ -1,26 +1,26 @@
 import { useAtom } from "jotai";
-import ListItem from "../classes/listItem";
 import styles from "../css/item.module.css";
 import { listAtom } from "./Todo";
 
-function Item({ info, key }: { info: ListItem; key: number }): JSX.Element {
+function Item({ index }: { index: number }): JSX.Element {
   const [list, setList] = useAtom(listAtom);
 
   const updateItemText = (itemKey: number, newText: string): void => {
     setList((prevList) => {
-      return prevList.map((itemList, index) => {
-        return itemKey == index ? { ...itemList, itemText: newText } : itemList;
+      return prevList.map((itemList, i) => {
+        return itemKey == i ? { ...itemList, itemText: newText } : itemList;
       });
     });
   };
+  console.log(index);
 
   return (
     <>
-      <h1>{list[key].itemText}</h1>
+      <h1>{list[index].itemText}</h1>
       <div className={styles.itemContainer}>
         <input
           type="text"
-          onChange={(e) => updateItemText(key, e.target.value)}
+          onChange={(e) => updateItemText(index, e.target.value)}
         />
         <div className={styles.checkboxContainer}>
           <input type="checkbox" name="completed" id="completed" />
