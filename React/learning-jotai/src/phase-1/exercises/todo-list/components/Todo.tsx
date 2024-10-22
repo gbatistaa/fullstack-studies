@@ -7,7 +7,8 @@ export const listAtom = atom<ListItem[]>([new ListItem()]);
 
 function Todo(): JSX.Element {
   const [list, setList] = useAtom(listAtom);
-  const createItem = (): ListItem => {
+  const createItem = (event: React.MouseEvent): ListItem => {
+    event.preventDefault();
     const item = new ListItem();
     setList((prevList) => prevList.concat([item]));
     return item;
@@ -22,6 +23,9 @@ function Todo(): JSX.Element {
           return <Item key={index} index={index} />;
         })}
       </div>
+      <button type="button" onClick={(e) => createItem(e)}>
+        Create Todo
+      </button>
     </div>
   );
 }
