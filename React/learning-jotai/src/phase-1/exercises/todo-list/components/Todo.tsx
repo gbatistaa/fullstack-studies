@@ -18,7 +18,8 @@ function Todo(): JSX.Element {
       <h1>TODO LIST</h1>
       <div className={styles.list}>
         {list.map((item, index) => {
-          return <Item info={item} key={index} />;
+          console.log(index, item);
+          return <Item key={index} index={index} />;
         })}
       </div>
     </div>
