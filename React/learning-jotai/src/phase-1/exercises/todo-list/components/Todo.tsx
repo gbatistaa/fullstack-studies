@@ -7,6 +7,9 @@ export const listAtom = atom<ListItem[]>([new ListItem()]);
 
 function Todo(): JSX.Element {
   const [list, setList] = useAtom(listAtom);
+
+  // Function that add a template list item on the todo list
+
   const createItem = (event: React.MouseEvent): ListItem => {
     event.preventDefault();
     const item = new ListItem();
