@@ -13,6 +13,10 @@ function Item({ index }: { index: number }): JSX.Element {
     });
   };
 
+  // In Jotai atoms you can maniulate any kind of data and different data structures
+  // When you want to manipulate arrays, and have to acess only one element in it,
+  // You have to do this map loop, to only modify the value you want and the rest untouchable:
+
   const updateItemStatus = (itemKey: number, checkboxValue: boolean): void => {
     setList((prevList) => {
       return prevList.map((itemList, idx) => {
