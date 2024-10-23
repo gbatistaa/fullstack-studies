@@ -22,7 +22,6 @@ function Item({ index }: { index: number }): JSX.Element {
       });
     });
   };
-  console.log(index);
 
   return (
     <>
