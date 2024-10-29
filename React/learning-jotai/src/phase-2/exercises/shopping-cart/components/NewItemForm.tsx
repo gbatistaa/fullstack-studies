@@ -1,13 +1,23 @@
 import { atom, useAtom } from "jotai";
 import React from "react";
 import Item from "../classes/Item";
+import styles from "../css/newItemForm.module.css";
+import { cartAtom } from "./Cart";
 
 const newItemAtom = atom<Item>(new Item());
 
 function NewItemForm(): JSX.Element {
   const [newItemInfo, setNewItemInfo] = useAtom(newItemAtom);
+  const [, setShoppingCart] = useAtom(cartAtom);
 
-  // const handleClickEvent = (): void => { };
+  const handleClickEvent = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ): void => {
+    event.preventDefault();
+    setShoppingCart((currentCart) => {
+      return currentCart.concat([newItemInfo]);
+    });
+  };
 
   const handleInputValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -55,7 +65,9 @@ function NewItemForm(): JSX.Element {
         id="quantity"
         onChange={(e) => handleInputValueChange(e, 2)}
       />
-      <button type="button"></button>
+      <button type="button" onClick={(e) => handleClickEvent(e)}>
+        New Item
+      </button>
     </form>
   );
 }
