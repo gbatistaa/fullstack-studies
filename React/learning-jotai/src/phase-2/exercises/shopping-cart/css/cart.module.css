@@ -1,0 +1,7 @@
+div.cartContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 3px;
+  column-gap: 3px;
+  column-rule: black solid 2px;
+}
