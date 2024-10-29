@@ -50,20 +50,27 @@ function NewItemForm(): JSX.Element {
 
   return (
     <form action="" className={styles.newItemForm}>
+      <h2>New Item Form</h2>
       <input
         type="text"
         id="name"
         onChange={(e) => handleInputValueChange(e, 0)}
+        className={styles.inputForm}
+        autoComplete="off"
       />
       <input
         type="text"
         id="price"
         onChange={(e) => handleInputValueChange(e, 1)}
+        className={styles.inputForm}
+        autoComplete="off"
       />
       <input
         type="text"
         id="quantity"
         onChange={(e) => handleInputValueChange(e, 2)}
+        className={styles.inputForm}
+        autoComplete="off"
       />
       <button type="button" onClick={(e) => handleClickEvent(e)}>
         New Item
