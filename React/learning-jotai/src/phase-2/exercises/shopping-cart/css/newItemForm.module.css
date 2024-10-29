@@ -15,6 +15,7 @@ input.inputForm {
   width: 150px;
 }
 
-form h2 {
+form h2,
+form h3 {
   color: #ffffff;
 }
