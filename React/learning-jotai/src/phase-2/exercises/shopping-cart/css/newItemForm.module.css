@@ -1,1 +1,18 @@
-form.newItemForm {}
+form.newItemForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  background-color: #2b2a2a;
+}
+
+input.inputForm {
+  width: 150px;
+}
+
+form h2 {
+  color: #ffffff;
+}
