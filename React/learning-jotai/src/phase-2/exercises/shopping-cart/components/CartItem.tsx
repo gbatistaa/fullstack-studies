@@ -1,10 +1,24 @@
+import { useAtom } from "jotai";
+import styles from "../css/cartitem.module.css";
+import { cartAtom } from "./Cart";
+
 function CartItem({ index }: { index: number }): JSX.Element {
+  const [cartList, setCartList] = useAtom(cartAtom);
   return (
-    <div>
-      <p>Name</p>
-      <p>Price</p>
-      <p>Quantity</p>
-    </div>
+    <section className={styles.itemContainer}>
+      <div className={styles.itemPropDiv}>
+        <input type="text" />
+        <p>{cartList[index].name}</p>
+      </div>
+      <div className={styles.itemPropDiv}>
+        <input type="text" />
+        <p>{cartList[index].price}</p>
+      </div>
+      <div className={styles.itemPropDiv}>
+        <input type="text" />
+        <p>{cartList[index].quantity}</p>
+      </div>
+    </section>
   );
 }
 
