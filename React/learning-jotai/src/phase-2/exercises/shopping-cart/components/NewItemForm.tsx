@@ -5,10 +5,16 @@ import styles from "../css/newItemForm.module.css";
 import { cartAtom } from "./Cart";
 
 const newItemAtom = atom<Item>(new Item());
+const totalPriceAtom = atom((get) =>
+  get(cartAtom).reduce((total, { price, quantity }) => {
+    return total + price * quantity;
+  }, 0),
+);
 
 function NewItemForm(): JSX.Element {
-  const [newItemInfo, setNewItemInfo] = useAtom(newItemAtom);
   const [, setShoppingCart] = useAtom(cartAtom);
+  const [totalPrice] = useAtom(totalPriceAtom);
+  const [newItemInfo, setNewItemInfo] = useAtom(newItemAtom);
 
   const handleClickEvent = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -75,6 +81,7 @@ function NewItemForm(): JSX.Element {
       <button type="button" onClick={(e) => handleClickEvent(e)}>
         New Item
       </button>
+      <h3>Preço Total: {totalPrice}$</h3>
     </form>
   );
 }
