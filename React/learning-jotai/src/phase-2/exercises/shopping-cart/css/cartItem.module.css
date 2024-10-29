@@ -1,0 +1,26 @@
+div.itemPropDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+div.itemPropDiv input {
+  height: fit-content;
+}
+
+div.itemPropDiv p {
+  margin: 0;
+}
+
+section.itemContainer {
+  background-color: blanchedalmond;
+  width: fit-content;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  border: 5px solid green;
+}
