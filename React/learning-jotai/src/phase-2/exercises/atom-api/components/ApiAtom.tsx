@@ -39,7 +39,9 @@ function ApiAtom(): JSX.Element {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    // In React 18 every
+    // In React 18 every async state transition must be wrapped
+    // by the startTransition, to avoid component substituition
+    // by a a loading indicator
 
     startTransition(() => {
       setAnimalName(inputValue);
