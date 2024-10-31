@@ -14,6 +14,11 @@ import { request } from "../api/apiFunction";
 
 const animalNameAtom = atom("shark");
 
+// Species atom is a async derivative atom, that means that
+// every changing on the animalNameAtom value, it makes another
+// call on its async function to get the response of the api
+// passing the new animal name value(string) as parameter
+
 const speciesAtom = atom(async (get) => {
   try {
     const animalName = get(animalNameAtom);
@@ -64,7 +69,9 @@ function ApiAtom(): JSX.Element {
           onChange={(e) => handleInputChange(e)}
           placeholder="Animal"
         />
-        <button type="submit">Change animal</button>
+        <button type="submit" style={{ cursor: "pointer" }}>
+          Change animal
+        </button>
       </form>
       <div>
         {species && species.length > 0 ? (
