@@ -5,7 +5,7 @@
  *  - Asynchronous atoms
  */
 import { atom, useAtom } from "jotai";
-import React from "react";
+import React, { startTransition, useState } from "react";
 import { request } from "../api/apiFunction";
 
 // This is an asynchronous atom, its initial value is the
@@ -15,31 +15,42 @@ import { request } from "../api/apiFunction";
 const animalNameAtom = atom("shark");
 
 const speciesAtom = atom(async (get) => {
-  const animalName = get(animalNameAtom);
-  return await request(animalName);
+  try {
+    const animalName = get(animalNameAtom);
+    return await request(animalName);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 });
 
 function ApiAtom(): JSX.Element {
-  const [species, setSpecies] = useAtom(speciesAtom);
-  const [animalName, setAnimalName] = useAtom(animalNameAtom);
+  const [species] = useAtom(speciesAtom);
+  const [, setAnimalName] = useAtom(animalNameAtom);
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     event.preventDefault();
-    setAnimalName(event.target.value);
-    setSpecies();
+    setInputValue(event.target.value);
   };
 
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-  //   event.preventDefault();
-  //   setSpecies(animalName); // Passes the new animal name to update the species list
-  // };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+
+    // In React 18 every
+
+    startTransition(() => {
+      setAnimalName(inputValue);
+    });
+    // Passes the new animal name to update the species list
+  };
 
   return (
     <>
       <form
-        // onSubmit={(e) => handleSubmit(e)}
+        onSubmit={(e) => handleSubmit(e)}
         style={{
           marginRight: "50px",
           display: "flex",
