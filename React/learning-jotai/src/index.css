@@ -17,6 +17,25 @@ body {
   height: 100vh;
 }
 
+div#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 input::placeholder {
   color: rgba(0, 0, 0, 0.451);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
 }
