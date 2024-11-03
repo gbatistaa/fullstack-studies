@@ -1,5 +1,11 @@
 import { atom, useAtom } from "jotai";
 
+/* A read-write Jotai atom is an atom that has an initial value
+either independently defined or derived from the value of another atom
+through the get function. It also has a set write function that allows
+changing the value of another atom, making it possible to interconnect
+and create a dependency between the values of the two atoms. */
+
 const counterValueAtom = atom(20);
 
 // readWriteCountAtom is fully dependent of counterValueAtom
