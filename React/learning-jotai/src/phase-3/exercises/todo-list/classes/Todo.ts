@@ -1,4 +1,4 @@
-class Todo {
+class Todos {
   public name;
   public category;
   public isCompleted;
@@ -17,4 +17,4 @@ class Todo {
   }
 }
 
-export default Todo;
+export default Todos;
