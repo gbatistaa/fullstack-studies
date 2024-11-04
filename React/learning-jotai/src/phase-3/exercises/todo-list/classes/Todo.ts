@@ -1,12 +1,12 @@
 class Todo {
-  public name: string = "";
-  public category: string = "";
-  public isCompleted: boolean = false;
+  public name;
+  public category;
+  public isCompleted;
 
-  constructor(name: string, category: string, isCompleted: boolean) {
-    this.name = name;
-    this.category = category;
-    this.isCompleted = isCompleted;
+  constructor(name?: string, category?: string, isCompleted?: boolean) {
+    this.name = name ? name : "";
+    this.category = category ? category : "";
+    this.isCompleted = isCompleted ? isCompleted : false;
   }
 }
 
