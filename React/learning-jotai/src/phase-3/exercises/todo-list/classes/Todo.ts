@@ -10,8 +10,8 @@ class Todos {
     category?: string,
     isCompleted?: boolean,
   ) {
-    this.name = name ? name : "";
-    this.category = category ? category : "";
+    this.name = name ? name : "none";
+    this.category = category ? category : "none";
     this.isCompleted = isCompleted ? isCompleted : false;
     this.id = id;
   }
