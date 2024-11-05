@@ -17,7 +17,8 @@ function Todo({ id }: { id: number }): JSX.Element {
       <h1>{todo.name}</h1>
       <h1>{todo.category}</h1>
       <h1>{todo.isCompleted ? "yes" : "no"}</h1>
-      <button type="button" onClick={deleteTodo}>
+      <h1>{todo.id}</h1>
+      <button type="button" onClick={(e) => deleteTodo(e)}>
         X
       </button>
     </div>
