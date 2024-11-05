@@ -34,13 +34,16 @@ function TodoList(): JSX.Element {
     event.preventDefault();
     const { name, category, isCompleted } = inputsRef.current;
 
-    // Define um novo átomo para o ID atual e atualiza o objeto `Todos`
-    const newTodoAtom = todoListFamily(currentId);
+    // Defines a new todoListFamily Atom with the current id
+    // and adds the new id on the ids list
+    const newTodoAtom = todoListFamily(currentId).init;
     setIds((currIds) => [...currIds, currentId]);
     setCurrentId((curr) => curr + 1);
 
-    // Atualiza o conteúdo do novo átomo diretamente
-    newTodoAtom.write();
+    // Puts the current inputs values inside the todo description
+    newTodoAtom.name = name === "" ? "Untitled" : name;
+    newTodoAtom.category = category === "" ? "No category" : category;
+    newTodoAtom.isCompleted = isCompleted;
   };
 
   return (
@@ -52,12 +55,20 @@ function TodoList(): JSX.Element {
       </div>
       <div className={styles.newTodoInputsDiv}>
         <form className={styles.createTodoForm} onSubmit={createNewTodo}>
-          <input type="text" name="name" onChange={handleInputChange} />
-          <input type="text" name="category" onChange={handleInputChange} />
+          <input
+            type="text"
+            name="name"
+            onChange={(e) => handleInputChange(e)}
+          />
+          <input
+            type="text"
+            name="category"
+            onChange={(e) => handleInputChange(e)}
+          />
           <input
             type="checkbox"
             name="isCompleted"
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e)}
           />
           <button type="submit">Create Todo</button>
         </form>
