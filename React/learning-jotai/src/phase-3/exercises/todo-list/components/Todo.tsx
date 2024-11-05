@@ -1,6 +1,5 @@
 import { useAtom } from "jotai";
 import React from "react";
-import styles from "../css/todo.module.css";
 import { todoIdsAtom, todoListFamily } from "./TodoList";
 
 function Todo({ id }: { id: number }): JSX.Element {
@@ -13,7 +12,7 @@ function Todo({ id }: { id: number }): JSX.Element {
   };
 
   return (
-    <div className={styles.todoInfo}>
+    <div style={{ border: "solid red 2px" }}>
       <h1>{todo.name}</h1>
       <h1>{todo.category}</h1>
       <h1>{todo.isCompleted ? "yes" : "no"}</h1>

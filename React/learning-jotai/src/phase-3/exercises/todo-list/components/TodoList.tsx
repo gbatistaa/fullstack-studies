@@ -2,7 +2,6 @@ import { atom, useAtom } from "jotai";
 import { atomFamily } from "jotai/utils";
 import React, { useRef } from "react";
 import Todos from "../classes/Todo";
-import styles from "../css/todoList.module.css";
 import Todo from "./Todo";
 
 export const todoListFamily = atomFamily((id: number) =>
@@ -47,14 +46,14 @@ function TodoList(): JSX.Element {
   };
 
   return (
-    <section className={styles.todoListContainer}>
-      <div className={styles.todoList}>
+    <section>
+      <div>
         {ids.map((id) => (
           <Todo key={id} id={id} />
         ))}
       </div>
-      <div className={styles.newTodoInputsDiv}>
-        <form className={styles.createTodoForm} onSubmit={createNewTodo}>
+      <div>
+        <form onSubmit={createNewTodo}>
           <input
             type="text"
             name="name"
