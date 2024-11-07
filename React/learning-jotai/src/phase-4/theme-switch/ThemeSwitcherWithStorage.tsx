@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import React from "react";
-import styles from "./atomWithStorage.module.css";
+import styles from "./themeSwitcherWithStorage.module.css";
 
 enum ColorTheme {
   LIGHT,
