@@ -5,7 +5,7 @@ import Product from "../classes/Product";
 import styles from "../css/shoppingCart.module.css";
 import CartProduct from "./CartProduct";
 
-const cartAtomStorage = atomWithStorage<Product[]>("savedProducts", []);
+export const cartAtomStorage = atomWithStorage<Product[]>("savedProducts", []);
 
 function ShoppingCart(): JSX.Element {
   const newProductRef = useRef<Product>(new Product());
@@ -55,7 +55,7 @@ function ShoppingCart(): JSX.Element {
         {products.map((product, index) => {
           return (
             <div key={index}>
-              <CartProduct key={index} id={productsIds[index]} />
+              <CartProduct id={products[index].id} />
               <div>{JSON.stringify(product)}</div>
             </div>
           );
