@@ -5,9 +5,9 @@ import React, { useRef } from "react";
 import { Product } from "./Product";
 import styles from "./productFilter.module.css";
 
-export type Category = "eletronics" | "clothes" | "toys" | "";
+export type Category = "eletronics&" | "clothes&" | "toys&" | "";
 
-const categoryAtom = atomWithHash<Category>("category", "");
+const categoryAtom = atomWithHash<Category[]>("category", [""]);
 const priceRangeAtom = atomWithHash<number[]>("price-range", [0, 100]);
 const productsAtom = atomWithStorage<Product[]>("products", []);
 
@@ -17,30 +17,38 @@ function ProductFilter(): JSX.Element {
   const [priceRange, setPriceRange] = useAtom(priceRangeAtom);
 
   const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
     const { checked, name } = event.target;
-    categoryRef.current = [
-      ...categoryRef.current,
-      checked ? (name as Category) : "",
-    ];
+    if (checked) {
+      categoryRef.current = [...categoryRef.current, name as Category];
+    } else {
+      categoryRef.current = [
+        ...categoryRef.current.filter((cat) => cat != (name as Category)),
+      ];
+    }
+    console.log(categoryRef.current);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    setCategory(categoryRef.current);
   };
 
   return (
     <section className={styles.productFilterContainer}>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="checkbox"
-          name="eletronics"
+          name="eletronics&"
           onChange={(e) => handleCheckbox(e)}
         />
         <input
           type="checkbox"
-          name="clothes"
+          name="clothes&"
           onChange={(e) => handleCheckbox(e)}
         />
         <input
           type="checkbox"
-          name="toys"
+          name="toys&"
           onChange={(e) => handleCheckbox(e)}
         />
         <button type="submit">Change Filter</button>
