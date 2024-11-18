@@ -29,18 +29,21 @@ function CategoryFilter(): JSX.Element {
 
   return (
     <section className={styles.productFilterContainer}>
+      eletronics{" "}
       <input
         type="checkbox"
         name="eletronics&"
         onChange={(e) => handleCheckbox(e)}
         checked={category.includes("eletronics&")}
       />
+      clothes{" "}
       <input
         type="checkbox"
         name="clothes&"
         onChange={(e) => handleCheckbox(e)}
         checked={category.includes("clothes&")}
       />
+      toys{" "}
       <input
         type="checkbox"
         name="toys&"
