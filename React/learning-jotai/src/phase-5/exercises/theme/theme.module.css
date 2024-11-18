@@ -1,0 +1,22 @@
+div {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+div.divDark {
+  color: white;
+  background-color: black;
+}
+
+div.divLight {
+  color: rgb(19, 16, 16);
+  background-color: antiquewhite
+}
