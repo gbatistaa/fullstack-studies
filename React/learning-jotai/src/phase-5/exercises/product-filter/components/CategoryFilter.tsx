@@ -2,8 +2,8 @@ import { useAtom } from "jotai";
 import { atomWithHash } from "jotai-location";
 import { atomWithStorage } from "jotai/utils";
 import React from "react";
-import { Product } from "./Product";
-import styles from "./productFilter.module.css";
+import { Product } from "../classes/Product";
+import styles from "../style/productFilter.module.css";
 
 export type Category = "eletronics&" | "clothes&" | "toys&" | "";
 
@@ -51,4 +51,4 @@ function CategoryFilter(): JSX.Element {
   );
 }
 
-export default ProductFilter;
+export default CategoryFilter;
