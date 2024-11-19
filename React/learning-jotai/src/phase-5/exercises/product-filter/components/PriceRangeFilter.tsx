@@ -2,24 +2,27 @@ import { useAtom } from "jotai";
 import { atomWithHash } from "jotai-location";
 import React from "react";
 
-const priceRangeAtom = atomWithHash("price-range", [0, 100], {
+const priceRangeAtom = atomWithHash<number[]>("price-range", [0, 100], {
   serialize: (val) => `${val[0]}-${val[1]}`,
-  deserialize: (str) => str.split("-").map((num) => Number(num)),
+  deserialize: (str) => str.split("-").map((num) => parseInt(num)),
 });
 
 function PriceRangeFilter(): JSX.Element {
   const [priceRange, setPriceRange] = useAtom(priceRangeAtom);
+  console.log(priceRange);
 
   const handlePriceChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    event.preventDefault();
     const { name, value } = event.target;
-    setPriceRange((prevRange) =>
-      name === "price-min"
-        ? [Number(value), prevRange[1]]
-        : [prevRange[0], Number(value)],
-    );
+    const newValue = Math.max(0, parseInt(value) || 0);
+    const [min, max] = priceRange;
+    if (name === "price-min") {
+      setPriceRange([Math.min(newValue, max), max]);
+    }
+    if (name === "price-max") {
+      setPriceRange([min, Math.max(newValue, min)]);
+    }
   };
 
   return (
@@ -29,6 +32,7 @@ function PriceRangeFilter(): JSX.Element {
         name="price-min"
         placeholder="Min. price"
         onChange={(e) => handlePriceChange(e)}
+        value={priceRange[0]}
       />
       <br />
       <input
@@ -36,6 +40,7 @@ function PriceRangeFilter(): JSX.Element {
         name="price-max"
         placeholder="Max. price"
         onChange={(e) => handlePriceChange(e)}
+        value={priceRange[1]}
       />
     </div>
   );
