@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import TodoList from "./phase-3/exercises/todo-list/components/TodoList.tsx";
+import ProductFilter from "./phase-5/exercises/product-filter/components/ProductFilter";
 
-createRoot(document.getElementById("root")!).render(<TodoList />);
+createRoot(document.getElementById("root")!).render(<ProductFilter />);
