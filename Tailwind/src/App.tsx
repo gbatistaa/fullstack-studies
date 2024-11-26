@@ -1,12 +1,12 @@
-import Borders from './components/3-borders'
+import DarkMode from './components/9-dark-mode'
 
 function App() {
 
   // Class-1: Fonts and colors
 
   return (
-    <div className='bg-gray-100 min-h-screen min-w-screen p-5 space-y-4'>
-      <Borders />
+    <div className='bg-gray-100 h-screen w-screen'>
+      <DarkMode />
     </div>
   )
 }
