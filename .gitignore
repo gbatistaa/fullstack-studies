@@ -1,0 +1,6 @@
+React/learning-jotai/.gitignore
+Tailwind/.editorconfig
+Tailwind/.prettierrc
+Tailwind/node_modules
+React/curso-react/jest-tests/.editorconfig
+node_modules
