@@ -1,0 +1,17 @@
+{
+  "name": "13-sync-async",
+  "version": "1.0.0",
+  "main": "async.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "file": "tsc vectors_generator.ts && node vectors_generator.js output.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.10.7"
+  }
+}

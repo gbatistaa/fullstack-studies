@@ -1,0 +1,17 @@
+{
+  "name": "15-tarefa",
+  "version": "1.0.0",
+  "main": "tarefa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "inquirer": "^12.3.2"
+  }
+}
