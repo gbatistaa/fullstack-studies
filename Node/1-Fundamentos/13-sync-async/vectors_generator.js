@@ -26,7 +26,7 @@ read.question("Quantidade de vetores: ", function (answer) {
 // Function to generate n numbers from 1 to 100:
 function generateRandomVector(n) {
     var vector = [];
-    var randomNum = 55;
+    var randomNum = 0;
     for (var i = 0; i < n; i++) {
         // Does not permits duplicated elements in the vector:
         do {
