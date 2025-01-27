@@ -4,3 +4,7 @@ Tailwind/.prettierrc
 Tailwind/node_modules
 React/curso-react/jest-tests/.editorconfig
 node_modules
+/Tailwind/.gitignore
+/.gitignore
+/Node/1-Fundamentos/13-sync-async/*.txt
+/React/learning-jotai/src/css/tailwind.css
