@@ -38,6 +38,7 @@ app.get("/books", (req, res) => {
   });
 });
 
+// Resgatando dados da "biblioteca pelo id do livro"
 app.get("/books/:id", (req, res) => {
   const id = req.params.id;
 
@@ -57,6 +58,24 @@ app.get("/books/:id", (req, res) => {
   });
 });
 
+// Rota para editar um livro com base no seu id:
+app.get("/books/edit/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = `SELECT * FROM Books WHERE id = ${id}`;
+
+  connection.query(query, function (err, data) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    const book = data[0];
+    res.render("editbook", { book });
+  });
+});
+
+// Inserindo dados no banco de dados por meio de uma url de post:
 app.post("/books/insertbook", (req, res) => {
   const title = req.body.title;
   const pageQty = req.body.pagesqty;
@@ -73,6 +92,7 @@ app.post("/books/insertbook", (req, res) => {
   });
 });
 
+// Objeto de configuração da conexão com o banco de dados
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -88,7 +108,7 @@ connection.connect(function (err) {
     console.log(err);
   } else {
     console.clear();
-    app.listen(3006);
+    app.listen(3007);
     console.log("Conectou ao banco de dados MySQL!");
   }
 });

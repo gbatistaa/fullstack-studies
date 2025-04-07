@@ -78,7 +78,7 @@ app.get("/books/edit/:id", (req, res) => {
 
 app.post("/books/insertbook", (req, res) => {
   const title = req.body.title;
-  const pageQty = req.body.pagesqty;
+  const pageQty = req.body.pageQty;
 
   const query = `INSERT INTO Books (title, pageQty) VALUES (?, ?)`;
 
@@ -92,10 +92,12 @@ app.post("/books/insertbook", (req, res) => {
   });
 });
 
-app.post("/books/updatebook", (req, res) => {
-  const id = parseInt(req.body.id);
+app.post("/books/updatebook/:id", (req, res) => {
+  const id = req.params.id;
   const title = req.body.title;
-  const pageQty = parseInt(req.body.pageQty);
+  const pageQty = req.body.pageQty;
+
+  console.log(req.body);
 
   if (!id || !title || !pageQty) {
     return res.status(400).send("Dados inválidos.");
@@ -106,6 +108,21 @@ app.post("/books/updatebook", (req, res) => {
     if (err) {
       console.log(err);
       return res.status(500).send("Erro ao atualizar livro: " + err.message);
+    } else {
+      res.redirect("/books");
+    }
+  });
+});
+
+app.post("/books/remove/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Books WHERE id = ?";
+
+  connection.query(query, [id], function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send("Erro ao deletar livro!");
     } else {
       res.redirect("/books");
     }

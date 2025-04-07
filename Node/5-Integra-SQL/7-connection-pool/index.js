@@ -1,6 +1,11 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import mysql from "mysql2";
+import pool from "./db/connection";
+
+// O uso do driver pool serve para otimizar as operações feitas
+// com o banco de dados, ele gerencia as operações colocando as
+// possíveis para a cache, e exclui as conexões inativas quando
+// o número passa do limite especificado por parâmetro, sempre use.
 
 const app = express();
 app.engine("handlebars", engine());
@@ -26,7 +31,7 @@ app.get("/", (req, res) => {
 app.get("/books", (req, res) => {
   const query = "SELECT * FROM Books";
 
-  connection.query(query, function (err, data) {
+  pool.query(query, function (err, data) {
     if (err) {
       console.log(err);
       return;
@@ -42,7 +47,7 @@ app.get("/books/:id", (req, res) => {
   const id = req.params.id;
 
   const query = "SELECT * FROM Books WHERE id = ?";
-  connection.query(query, [id], function (err, data) {
+  pool.query(query, [id], function (err, data) {
     if (err) {
       console.log(err);
       return res.status(500).send("Erro no servidor");
@@ -61,7 +66,7 @@ app.get("/books/edit/:id", (req, res) => {
   const id = req.params.id;
 
   const query = "SELECT * FROM Books WHERE id = ?";
-  connection.query(query, [id], function (err, data) {
+  pool.query(query, [id], function (err, data) {
     if (err) {
       console.log(err);
       return res.status(500).send("Erro no servidor");
@@ -78,11 +83,11 @@ app.get("/books/edit/:id", (req, res) => {
 
 app.post("/books/insertbook", (req, res) => {
   const title = req.body.title;
-  const pageQty = req.body.pagesqty;
+  const pageQty = req.body.pageQty;
 
   const query = `INSERT INTO Books (title, pageQty) VALUES (?, ?)`;
 
-  connection.query(query, [title, pageQty], function (err, data) {
+  pool.query(query, [title, pageQty], function (err, data) {
     if (err) {
       console.log(err);
       res.send("Erro ao inserir livro!");
@@ -92,17 +97,19 @@ app.post("/books/insertbook", (req, res) => {
   });
 });
 
-app.post("/books/updatebook", (req, res) => {
-  const id = parseInt(req.body.id);
+app.post("/books/updatebook/:id", (req, res) => {
+  const id = req.params.id;
   const title = req.body.title;
-  const pageQty = parseInt(req.body.pageQty);
+  const pageQty = req.body.pageQty;
+
+  console.log(req.body);
 
   if (!id || !title || !pageQty) {
     return res.status(400).send("Dados inválidos.");
   }
 
   const query = "UPDATE Books SET title = ?, pageQty = ? WHERE id = ?";
-  connection.query(query, [title, pageQty, id], function (err, data) {
+  pool.query(query, [title, pageQty, id], function (err, data) {
     if (err) {
       console.log(err);
       return res.status(500).send("Erro ao atualizar livro: " + err.message);
@@ -112,17 +119,22 @@ app.post("/books/updatebook", (req, res) => {
   });
 });
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "jujubAOI312.",
-  database: "nodemysql",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+app.post("/books/remove/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Books WHERE id = ?";
+
+  pool.query(query, [id], function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send("Erro ao deletar livro!");
+    } else {
+      res.redirect("/books");
+    }
+  });
 });
 
-connection.connect(function (err) {
+pool.connect(function (err) {
   if (err) {
     console.log(err);
   } else {
