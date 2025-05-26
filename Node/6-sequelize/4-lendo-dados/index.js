@@ -27,8 +27,28 @@ app.use(
 app.use(express.json());
 
 // Rota para renderizar automaticamente o componente home:
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/", async (req, res) => {
+  const users = await User.findAll({ raw: true });
+  console.log(users);
+  res.render("home", { users: users });
+});
+
+// Rota que renderiza o componente adduser na tela:
+app.get("/users/create", (req, res) => {
+  res.render("adduser");
+});
+
+// Rota para criar um novo usuário no banco de dados
+app.post("/users/create", async (req, res) => {
+  const name = req.body.name;
+  const occupation = req.body.occupation;
+  const newsletter = req.body.newsletter === "on" ? true : false;
+
+  console.log(req.body);
+
+  await User.create({ name, occupation, newsletter });
+
+  res.redirect("/");
 });
 
 connection

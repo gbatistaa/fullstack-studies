@@ -15,7 +15,7 @@ router.get("/add", (req, res) => {
 });
 
 router.post("/save", (req, res) => {
-  // Escrevendo a resposta da equisição no console
+  // Escrevendo a resposta da requisição no console
   console.log(req.body);
 
   const name = req.body.name;
