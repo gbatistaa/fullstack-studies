@@ -15,16 +15,14 @@ const port = process.env.PORT || 4000;
 // - O express.json converte o corpo do request em um objeto JS.
 
 // lendo o body:
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-);
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
 const basePath = path.join(__dirname, "html");
 
+// Toda requisição feita com a URL começando em /users será
+// tratada pelas rotas de middleware que estão no Router de users:
 app.use("/users", users);
 
 app.get("/", (req, res) => {
