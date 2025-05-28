@@ -1,4 +1,5 @@
 import sqlite3 from "sqlite3";
+import { handleSQLiteError } from "./functions/erros.js";
 import { execute } from "./functions/execute.js";
 
 // Ao executar esse arquivo js é criado um arquivo .db na raiz do projeto
@@ -18,7 +19,9 @@ async function main() {
         cpf VARCHAR(14) NOT NULL UNIQUE
       )`,
     );
-  } catch (error) {}
+  } catch (error) {
+    handleSQLiteError(error);
+  }
 }
 
 main();

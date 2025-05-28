@@ -1,14 +1,15 @@
 import sqlite3 from "sqlite3";
 import { handleSQLiteError } from "./functions/erros.js";
-import { execute } from "./functions/execute.js";
+import { fetchAll } from "./functions/fetch.js";
 
 async function main() {
   const db = new sqlite3.Database("my_database.db");
 
-  const sql = `INSERT INTO users(user_name,cpf) VALUES(?,?)`;
+  const sql = `SELECT * FROM users`;
 
   try {
-    await execute(db, sql, ["Samara", "05354093546"]);
+    const users = await fetchAll(db, sql);
+    console.log(users);
   } catch (error) {
     handleSQLiteError(error);
   } finally {

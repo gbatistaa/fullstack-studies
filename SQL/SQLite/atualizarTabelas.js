@@ -4,11 +4,10 @@ import { execute } from "./functions/execute.js";
 
 async function main() {
   const db = new sqlite3.Database("my_database.db");
-
-  const sql = `INSERT INTO users(user_name,cpf) VALUES(?,?)`;
+  const sql = `UPDATE users SET user_name = ?, cpf = ? WHERE id = ?`;
 
   try {
-    await execute(db, sql, ["Samara", "05354093546"]);
+    await execute(db, sql, ["Guilherme", "89032146599", 2]);
   } catch (error) {
     handleSQLiteError(error);
   } finally {
