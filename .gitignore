@@ -8,3 +8,4 @@ node_modules
 /.gitignore
 /Node/1-Fundamentos/13-sync-async/*.txt
 /React/learning-jotai/src/css/tailwind.css
+app

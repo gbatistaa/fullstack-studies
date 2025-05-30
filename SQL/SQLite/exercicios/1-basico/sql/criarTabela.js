@@ -8,10 +8,10 @@ export async function criarTabelas() {
   try {
     execute(
       db,
-      `CREATE TABLE clientes(
+      `CREATE TABLE IF NOT EXISTS clientes(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome VARCHAR,
-        email VARCHAR,
+        email VARCHAR UNIQUE,
         data_cadastro VARCHAR
       )`,
     );

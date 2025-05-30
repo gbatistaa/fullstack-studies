@@ -18,8 +18,8 @@ export async function inserirClientes() {
   const sql = `INSERT INTO clientes(nome,email,data_cadastro) VALUES (?,?,?)`;
 
   try {
-    for (const cliente of clientes) {
-      await execute(db, sql, cliente);
+    for (let i = 0; i < clientes.length; i++) {
+      await execute(db, sql, clientes[i]);
     }
   } catch (error) {
     handleSQLiteError(error);
