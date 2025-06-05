@@ -46,7 +46,7 @@ const baseConfig = [
         },
       ],
       "import/prefer-default-export": "off",
-      "prettier/prettier": ["error", { endOfLine: "auto", singleQuote: false }],
+      "prettier/prettier": ["error", { endOfLine: "auto", singleQuote: false, printWidth: 120 }],
       quotes: ["error", "double"],
     },
     settings: {

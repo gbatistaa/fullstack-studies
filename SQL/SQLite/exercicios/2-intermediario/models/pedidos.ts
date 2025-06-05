@@ -1,27 +1,31 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import connection from "../db/connection";
+import PedidoType from "../interfaces/Pedido";
 
-const Pedido = connection.define("Pedido", {
+const Pedido = connection.define<Model<PedidoType>>("Pedido", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  client_id: {
+  clientId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: "Cliente",
       key: "id",
     },
+    field: "client_id",
   },
-  valor_total: {
+  valorTotal: {
     type: DataTypes.FLOAT,
     allowNull: false,
+    field: "valor_total",
   },
-  data_pedido: {
+  dataPedido: {
     type: DataTypes.DATE,
     allowNull: false,
+    field: "data_pedido",
   },
 });
 

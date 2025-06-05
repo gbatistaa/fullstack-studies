@@ -2,8 +2,10 @@ import connection from "./db/connection.js";
 
 const main = async (): Promise<void> => {
   try {
-    const resultado = await connection.sync();
-    resultado;
+    await connection.sync();
+    // for (const cliente of clientes) {
+    //   await cadastrarCliente();
+    // }
   } catch (error) {
     console.log(error);
   }

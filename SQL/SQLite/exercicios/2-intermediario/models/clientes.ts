@@ -1,7 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import connection from "../db/connection.js";
+import ClienteType from "../interfaces/Cliente.js";
 
-const Cliente = connection.define("Cliente", {
+const Cliente = connection.define<Model<ClienteType>>("Cliente", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -16,9 +17,10 @@ const Cliente = connection.define("Cliente", {
     allowNull: false,
     unique: true,
   },
-  data_cadastro: {
+  dataCadastro: {
     type: DataTypes.DATE,
     allowNull: false,
+    field: "data_cadastro",
   },
 });
 

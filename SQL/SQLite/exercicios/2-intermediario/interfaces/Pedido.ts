@@ -1,5 +1,5 @@
-export default interface Pedido {
-  id: number;
+export default interface PedidoType {
+  id?: number;
   clientId: number;
   valorTotal: number;
   dataPedido: Date;
