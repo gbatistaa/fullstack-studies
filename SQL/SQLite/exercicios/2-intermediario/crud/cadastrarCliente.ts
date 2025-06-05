@@ -1,6 +1,6 @@
 import Cliente from "../models/clientes.js";
 
-const cadastrarCliente = async () => {
+const cadastrarCliente = async (): Promise<void> => {
   try {
     const resultadoCadastro = Cliente.create({});
     console.log(resultadoCadastro);

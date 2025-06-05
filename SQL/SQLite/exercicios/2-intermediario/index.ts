@@ -1,6 +1,6 @@
 import connection from "./db/connection.js";
 
-const main = async () => {
+const main = async (): Promise<void> => {
   try {
     const resultado = await connection.sync();
     resultado;
