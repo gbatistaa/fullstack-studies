@@ -2,26 +2,30 @@ import { DataTypes, Model } from "sequelize";
 import connection from "../db/connection.js";
 import ClienteType from "../interfaces/Cliente.js";
 
-const Cliente = connection.define<Model<ClienteType>>("Cliente", {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
+const Clientes = connection.define<Model<ClienteType>>(
+  "Clientes",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    dataCadastro: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: "data_cadastro",
+    },
   },
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  dataCadastro: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    field: "data_cadastro",
-  },
-});
+  { timestamps: false },
+);
 
-export default Cliente;
+export default Clientes;
