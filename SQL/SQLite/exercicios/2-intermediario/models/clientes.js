@@ -6,17 +6,20 @@ const Cliente = connection.define("Cliente", {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-  }, nome: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }, email: {
+  },
+  nome: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
-  }, dataCadastro: {
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  data_cadastro: {
     type: DataTypes.DATE,
-    allowNull: false
-  }
-})
+    allowNull: false,
+  },
+});
 
 export default Cliente;
