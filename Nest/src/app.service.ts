@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from './modules/user/user.repository';
+import { User } from './modules/user/entities/user-entity';
+import { UsersService } from './modules/user/user.service';
 
 @Injectable()
 export class AppService {
-  private userService: UserService;
+  private userService: UsersService;
 
-  getHello(): string {
+  getHello(): User[] {
     return this.userService.findAll();
   }
 }

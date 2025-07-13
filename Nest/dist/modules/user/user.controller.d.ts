@@ -1,9 +1,12 @@
-import { UserDTO } from './dto/user-dto';
-import { UserService } from './user.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UsersService } from './user.service';
 export declare class UserController {
-    private userService;
-    constructor(userService: UserService);
-    findAll(): string;
-    update(id: string): string;
-    save(user: UserDTO): UserDTO;
+    private readonly usersService;
+    constructor(usersService: UsersService);
+    create(createUserDto: CreateUserDto): import("./entities/user-entity").User;
+    findAll(): import("./entities/user-entity").User[];
+    findOne(id: string): import("./entities/user-entity").User;
+    update(id: string, updateUserDto: UpdateUserDto): import("./entities/user-entity").User;
+    remove(id: string): void;
 }
