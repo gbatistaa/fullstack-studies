@@ -1,13 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from './user-repository/user-repository';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user-entity';
+import { UserRepository } from './user.repository';
 
 // Services são os providers onde ficam a lógica de negócio do módulo
 // Os controllers se comunicam com os services e os services com os repositories
 
 @Injectable()
-export class UserService {
-  constructor(private userRepository: UserRepository) {}
-  findAll(): string {
+export class UsersService {
+  public users: User[];
+
+  private userRepository: UserRepository;
+
+  /**
+   * Method to convert dto to user entity
+   * @param createUser dto
+   * @returns User
+   */
+
+  public create(createUser: CreateUserDto): User {
+    return this.userRepository.create(createUser);
+  }
+
+  public findAll() {
     return this.userRepository.findAll();
+  }
+
+  public findOne(id: string): User {
+    return this.userRepository.findOne(id);
+  }
+
+  public update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userRepository.update(id, updateUserDto);
+  }
+
+  public remove(id: string) {
+    return this.userRepository.remove(id);
   }
 }

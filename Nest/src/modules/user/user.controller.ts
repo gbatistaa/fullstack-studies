@@ -1,33 +1,34 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { UserDTO } from './dto/user-dto';
-import { UserService } from './user.service';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UsersService } from './user.service';
 
-// Arquitetura modular - 4
+@Controller('users')
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
 
-// interface QueryPayload {
-//   filter: string;
-//   limit: string;
-// }
-
-@Controller('user')
-export class UserController {
-  // Para usar um service dentro de um controller apenas
-  constructor(private userService: UserService) {}
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.create(createUserDto);
+  }
 
   @Get()
-  findAll(): string {
-    const lista: string = this.userService.findAll();
-    return lista;
+  findAll() {
+    return this.usersService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.usersService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string): string {
-    return `<h1>meu id é ${id}</h1>`;
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(id, updateUserDto);
   }
 
-  @Post()
-  save(@Body() user: UserDTO): UserDTO {
-    console.log([user.username, user.email, user.password]);
-    return user;
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.usersService.remove(id);
   }
 }

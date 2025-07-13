@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { User } from './user';
+import { User } from './entities/user-entity';
 import { UserRepository } from './user-repository/user-repository';
 import { UserController } from './user.controller';
-import { UserService } from './user.service';
+import { UsersService } from './user.repository';
 
 @Module({
   controllers: [UserController],
-  providers: [User, UserService, UserRepository],
+  providers: [User, UsersService, UserRepository],
   // Isso permite que eu possa usar classes desse meu módulo em outro módulo
-  exports: [UserService],
+  exports: [UsersService],
 })
 export class UserModule {}
