@@ -22,7 +22,6 @@ let UserController = class UserController {
         this.usersService = usersService;
     }
     create(createUserDto) {
-        console.log('');
         return this.usersService.create(createUserDto);
     }
     findAll() {
@@ -75,7 +74,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "remove", null);
 exports.UserController = UserController = __decorate([
-    (0, common_1.Controller)('users'),
+    (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UsersService])
 ], UserController);
 //# sourceMappingURL=user.controller.js.map

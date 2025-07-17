@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user-entity';
@@ -11,7 +11,7 @@ import { UserRepository } from './user.repository';
 export class UsersService {
   public users: User[];
 
-  private userRepository: UserRepository;
+  constructor(private userRepository: UserRepository) {}
 
   /**
    * Method to convert dto to user entity
@@ -20,7 +20,12 @@ export class UsersService {
    */
 
   public create(createUser: CreateUserDto): User {
-    return this.userRepository.create(createUser);
+    try {
+      return this.userRepository.create(createUser);
+    } catch (error) {
+      console.log(error);
+      throw new BadRequestException('Bad request');
+    }
   }
 
   public findAll() {

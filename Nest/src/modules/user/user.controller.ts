@@ -3,13 +3,12 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './user.service';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('');
     return this.usersService.create(createUserDto);
   }
 
