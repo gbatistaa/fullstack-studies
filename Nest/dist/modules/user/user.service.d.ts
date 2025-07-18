@@ -10,5 +10,5 @@ export declare class UsersService {
     findAll(): User[];
     findOne(id: string): User;
     update(id: string, updateUserDto: UpdateUserDto): User;
-    remove(id: string): void;
+    remove(id: string): User;
 }

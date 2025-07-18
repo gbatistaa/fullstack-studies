@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -23,24 +24,39 @@ export class UsersService {
     try {
       return this.userRepository.create(createUser);
     } catch (error) {
-      console.log(error);
       throw new BadRequestException('Bad request');
     }
   }
 
   public findAll() {
-    return this.userRepository.findAll();
+    try {
+      return this.userRepository.findAll();
+    } catch (error) {
+      throw new BadRequestException('Bad request');
+    }
   }
 
   public findOne(id: string): User {
-    return this.userRepository.findOne(id);
+    try {
+      return this.userRepository.findOne(id);
+    } catch (error) {
+      throw new BadRequestException('Bad request');
+    }
   }
 
   public update(id: string, updateUserDto: UpdateUserDto) {
-    return this.userRepository.update(id, updateUserDto);
+    try {
+      return this.userRepository.update(id, updateUserDto);
+    } catch (error) {
+      throw new BadRequestException('Bad request');
+    }
   }
 
   public remove(id: string) {
-    return this.userRepository.remove(id);
+    try {
+      return this.userRepository.remove(id);
+    } catch (error) {
+      throw new BadRequestException('Bad request');
+    }
   }
 }

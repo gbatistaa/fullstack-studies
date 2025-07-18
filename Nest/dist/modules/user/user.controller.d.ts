@@ -8,5 +8,5 @@ export declare class UserController {
     findAll(): import("./entities/user-entity").User[];
     findOne(id: string): import("./entities/user-entity").User;
     update(id: string, updateUserDto: UpdateUserDto): import("./entities/user-entity").User;
-    remove(id: string): void;
+    remove(id: string): import("./entities/user-entity").User;
 }

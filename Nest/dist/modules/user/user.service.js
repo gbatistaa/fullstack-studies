@@ -21,21 +21,40 @@ let UsersService = class UsersService {
             return this.userRepository.create(createUser);
         }
         catch (error) {
-            console.log(error);
             throw new common_1.BadRequestException('Bad request');
         }
     }
     findAll() {
-        return this.userRepository.findAll();
+        try {
+            return this.userRepository.findAll();
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Bad request');
+        }
     }
     findOne(id) {
-        return this.userRepository.findOne(id);
+        try {
+            return this.userRepository.findOne(id);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Bad request');
+        }
     }
     update(id, updateUserDto) {
-        return this.userRepository.update(id, updateUserDto);
+        try {
+            return this.userRepository.update(id, updateUserDto);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Bad request');
+        }
     }
     remove(id) {
-        return this.userRepository.remove(id);
+        try {
+            return this.userRepository.remove(id);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Bad request');
+        }
     }
 };
 exports.UsersService = UsersService;

@@ -10,3 +10,4 @@ node_modules
 /React/learning-jotai/src/css/tailwind.css
 app
 Nest/dist
+Nest/coverage

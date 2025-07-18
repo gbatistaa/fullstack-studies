@@ -39,7 +39,7 @@ export class UserRepository {
     return user;
   }
 
-  public findAll() {
+  public findAll(): User[] {
     return this.users;
   }
 
@@ -49,16 +49,16 @@ export class UserRepository {
     return user;
   }
 
-  public update(id: string, updateUserDto: UpdateUserDto) {
+  public update(id: string, updateUserDto: UpdateUserDto): User {
     const user = this.findOne(id);
     if (updateUserDto.firstName) user.firstName = updateUserDto.firstName;
     if (updateUserDto.lastName) user.lastName = updateUserDto.lastName;
     return user;
   }
 
-  public remove(id: string) {
+  public remove(id: string): User {
     const index = this.users.findIndex((prop) => prop.id === id);
     if (index < 0) throw new NotFoundException();
-    this.users.splice(index, 1);
+    return this.users.splice(index, 1)[0];
   }
 }
