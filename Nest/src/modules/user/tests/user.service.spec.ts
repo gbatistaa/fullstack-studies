@@ -3,55 +3,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { User } from '../entities/user-entity';
 import { UserRepository } from '../user.repository';
 import { UsersService } from '../user.service';
+import { DefaultUserDto } from './mocks/defaultUserDto';
+import { UsersMock } from './mocks/usersMock';
 
 // Teste principal da classe UsersSerivce
 describe(UsersService, () => {
   let service: UsersService;
   let repository: UserRepository;
-
-  const DefaultUserDto: User = {
-    username: 'default',
-    firstName: 'default',
-    lastName: 'default',
-    email: 'default',
-    password: 'default',
-    active: true,
-    id: 'id',
-    salt: 'salt',
-  };
-
-  const UsersMock: User[] = [
-    {
-      username: 'gabriel.barbosa',
-      firstName: 'Gabriel',
-      lastName: 'Batista Barbosa',
-      email: 'gabriel.barbosa@example.com',
-      password: 'password123',
-      active: true,
-      id: '1',
-      salt: 'salt1',
-    },
-    {
-      username: 'samara.oliveira',
-      firstName: 'Samara Emanuelle',
-      lastName: 'Xavier de Oliveira',
-      email: 'samara.oliveira@example.com',
-      password: 'password456',
-      active: true,
-      id: '2',
-      salt: 'salt2',
-    },
-    {
-      username: 'roberta.bezerra',
-      firstName: 'Roberta',
-      lastName: 'Peterle Bezerra',
-      email: 'roberta.bezerra@example.com',
-      password: 'password789',
-      active: false,
-      id: '3',
-      salt: 'salt3',
-    },
-  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -134,6 +92,15 @@ describe(UsersService, () => {
         expect(user).toBe(UsersMock[index]);
         expect(user.id).toBe(UsersMock[index].id);
       });
+    });
+
+    it('should fail', () => {
+      jest.spyOn(service, 'findAll').mockImplementationOnce(() => {
+        throw new BadRequestException();
+      });
+
+      const fn = () => service.findAll();
+      expect(fn).toThrow(BadRequestException);
     });
   });
 });
