@@ -10,4 +10,4 @@ import { UsersService } from './user.service';
   // Isso permite que eu possa usar classes desse meu módulo em outro módulo
   exports: [UsersService],
 })
-export class UserModule {}
+export class UsersModule {}
