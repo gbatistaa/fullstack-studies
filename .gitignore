@@ -11,3 +11,5 @@ node_modules
 app
 Nest/dist
 Nest/coverage
+Nest/src/.env
+Nest/.env

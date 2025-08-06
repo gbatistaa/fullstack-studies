@@ -1,3 +1,8 @@
+// É necessário que as variáveis de ambiente sejam carregadas antes da
+// importação do módulo, pois elas podem vir com valores undefined:
+import * as dotenv from 'dotenv';
+dotenv.config({ path: './.env' });
+
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';

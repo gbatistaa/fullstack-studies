@@ -1,0 +1,65 @@
+[2025-08-06T19:14:23.154Z][QUERY]: SELECT version()
+[2025-08-06T19:14:23.160Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:14:23.434Z][QUERY]: START TRANSACTION
+[2025-08-06T19:14:23.438Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:14:23.449Z][QUERY]: COMMIT
+[2025-08-06T19:15:09.786Z][QUERY]: SELECT version()
+[2025-08-06T19:15:09.789Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:15:10.029Z][QUERY]: START TRANSACTION
+[2025-08-06T19:15:10.032Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:15:10.039Z][QUERY]: COMMIT
+[2025-08-06T19:16:22.605Z][QUERY]: SELECT version()
+[2025-08-06T19:16:22.609Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:16:22.851Z][QUERY]: START TRANSACTION
+[2025-08-06T19:16:22.854Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:16:22.863Z][QUERY]: COMMIT
+[2025-08-06T19:16:38.929Z][QUERY]: SELECT version()
+[2025-08-06T19:16:38.933Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:16:39.257Z][QUERY]: START TRANSACTION
+[2025-08-06T19:16:39.261Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:16:39.275Z][QUERY]: COMMIT
+[2025-08-06T19:17:16.949Z][QUERY]: SELECT version()
+[2025-08-06T19:17:16.953Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:17:17.188Z][QUERY]: START TRANSACTION
+[2025-08-06T19:17:17.192Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:17:17.201Z][QUERY]: COMMIT
+[2025-08-06T19:17:24.797Z][QUERY]: SELECT version()
+[2025-08-06T19:17:24.800Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:17:25.061Z][QUERY]: START TRANSACTION
+[2025-08-06T19:17:25.077Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:17:25.106Z][QUERY]: COMMIT
+[2025-08-06T19:17:26.776Z][QUERY]: SELECT version()
+[2025-08-06T19:17:26.779Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:17:27.034Z][QUERY]: START TRANSACTION
+[2025-08-06T19:17:27.039Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:17:27.049Z][QUERY]: COMMIT
+[2025-08-06T19:18:21.035Z][QUERY]: SELECT version()
+[2025-08-06T19:18:21.039Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:18:21.346Z][QUERY]: START TRANSACTION
+[2025-08-06T19:18:21.350Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:18:21.362Z][QUERY]: COMMIT
+[2025-08-06T19:18:30.576Z][QUERY]: SELECT version()
+[2025-08-06T19:18:30.580Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:18:30.829Z][QUERY]: START TRANSACTION
+[2025-08-06T19:18:30.834Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:18:30.843Z][QUERY]: COMMIT
+[2025-08-06T19:18:51.348Z][QUERY]: SELECT version()
+[2025-08-06T19:18:51.353Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:18:51.696Z][QUERY]: START TRANSACTION
+[2025-08-06T19:18:51.698Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:18:51.704Z][QUERY]: COMMIT
+[2025-08-06T19:19:01.699Z][QUERY]: SELECT version()
+[2025-08-06T19:19:01.702Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:19:01.964Z][QUERY]: START TRANSACTION
+[2025-08-06T19:19:01.972Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:19:01.981Z][QUERY]: COMMIT
+[2025-08-06T19:19:03.636Z][QUERY]: SELECT version()
+[2025-08-06T19:19:03.639Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:19:03.879Z][QUERY]: START TRANSACTION
+[2025-08-06T19:19:03.881Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:19:03.887Z][QUERY]: COMMIT
+[2025-08-06T19:19:16.587Z][QUERY]: SELECT version()
+[2025-08-06T19:19:16.590Z][QUERY]: SELECT * FROM current_schema()
+[2025-08-06T19:19:16.818Z][QUERY]: START TRANSACTION
+[2025-08-06T19:19:16.822Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2025-08-06T19:19:16.829Z][QUERY]: COMMIT
