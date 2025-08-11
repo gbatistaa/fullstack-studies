@@ -1,7 +1,7 @@
 import { AppService } from './app.service';
-import { User } from './modules/user/entities/user-entity';
+import { UserDTO } from './modules/user/dto/user-dto';
 export declare class AppController {
     private readonly appService;
     constructor(appService: AppService);
-    getHello(): User[];
+    getHello(): Promise<UserDTO[]>;
 }

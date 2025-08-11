@@ -3,4 +3,5 @@ export interface UserCreatableInterface {
   password: string;
   firstName: string;
   lastName: string;
+  email: string;
 }

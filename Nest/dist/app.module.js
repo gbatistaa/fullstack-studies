@@ -11,7 +11,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const user_controller_1 = require("./modules/user/user.controller");
+const role_module_1 = require("./modules/role/role.module");
 const users_module_1 = require("./modules/user/users.module");
 let AppModule = class AppModule {
 };
@@ -20,6 +20,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             users_module_1.UsersModule,
+            role_module_1.RoleModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: process.env.HOST ?? 'localhost',
@@ -27,14 +28,14 @@ exports.AppModule = AppModule = __decorate([
                 username: process.env.USERNAME ?? 'postgres',
                 password: String(process.env.PASSWORD ?? ''),
                 database: process.env.DATABASE ?? 'fullstack_studies',
-                entities: [__dirname + '/../**/*.entity.{js,ts}'],
                 migrations: [__dirname + '/../migrations/*.{js,ts}'],
+                autoLoadEntities: true,
                 synchronize: true,
                 logging: true,
                 logger: 'file',
             }),
         ],
-        controllers: [app_controller_1.AppController, user_controller_1.UserController],
+        controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
 ], AppModule);

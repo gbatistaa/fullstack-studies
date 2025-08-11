@@ -1,6 +1,9 @@
 import { User } from '../../entities/user-entity';
 
-export const UsersMock: User[] = [
+// A classe Parcial permite que alguns campos obrigatórios
+// de objetos tipados sejam omitidos, sendo uma boa alternativa
+// para mocks de teste
+export const UsersMock: Partial<User>[] = [
   {
     username: 'gabriel.barbosa',
     firstName: 'Gabriel',
@@ -12,7 +15,7 @@ export const UsersMock: User[] = [
     salt: 'salt1',
   },
   {
-    username: 'samara.oliveira',
+    username: 'samara.oliveir',
     firstName: 'Samara Emanuelle',
     lastName: 'Xavier de Oliveira',
     email: 'samara.oliveira@example.com',

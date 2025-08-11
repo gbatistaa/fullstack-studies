@@ -1,5 +1,5 @@
-import { User } from './modules/user/entities/user-entity';
+import { UserDTO } from './modules/user/dto/user-dto';
 export declare class AppService {
     private userService;
-    getHello(): User[];
+    getHello(): Promise<UserDTO[]>;
 }

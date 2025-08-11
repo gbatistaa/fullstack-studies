@@ -2,6 +2,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDTO } from './dto/user-dto';
 import { User } from './entities/user-entity';
 import { UserRepository } from './user.repository';
 
@@ -20,7 +21,7 @@ export class UsersService {
    * @returns User
    */
 
-  public create(createUser: CreateUserDto): User {
+  public create(createUser: CreateUserDto): Promise<UserDTO> {
     try {
       return this.userRepository.create(createUser);
     } catch (error) {
@@ -28,7 +29,7 @@ export class UsersService {
     }
   }
 
-  public findAll() {
+  public findAll(): Promise<UserDTO[]> {
     try {
       return this.userRepository.findAll();
     } catch (error) {
@@ -36,7 +37,7 @@ export class UsersService {
     }
   }
 
-  public findOne(id: string): User {
+  public findOne(id: string): Promise<UserDTO> {
     try {
       return this.userRepository.findOne(id);
     } catch (error) {
@@ -44,7 +45,7 @@ export class UsersService {
     }
   }
 
-  public update(id: string, updateUserDto: UpdateUserDto) {
+  public update(id: string, updateUserDto: UpdateUserDto): Promise<UserDTO> {
     try {
       return this.userRepository.update(id, updateUserDto);
     } catch (error) {
@@ -52,7 +53,7 @@ export class UsersService {
     }
   }
 
-  public remove(id: string) {
+  public remove(id: string): Promise<UserDTO> {
     try {
       return this.userRepository.remove(id);
     } catch (error) {

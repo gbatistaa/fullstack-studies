@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { User } from './modules/user/entities/user-entity';
+import { UserDTO } from './modules/user/dto/user-dto';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): User[] {
+  getHello(): Promise<UserDTO[]> {
     return this.appService.getHello();
   }
 }

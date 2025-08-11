@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './modules/user/user.controller';
+import { RoleModule } from './modules/role/role.module';
 import { UsersModule } from './modules/user/users.module';
 
 // Aqui está a configuração do módulo da conexão com o banco de dados PostgreSQL
@@ -10,6 +10,7 @@ import { UsersModule } from './modules/user/users.module';
 @Module({
   imports: [
     UsersModule,
+    RoleModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.HOST ?? 'localhost',
@@ -17,14 +18,15 @@ import { UsersModule } from './modules/user/users.module';
       username: process.env.USERNAME ?? 'postgres',
       password: String(process.env.PASSWORD ?? ''),
       database: process.env.DATABASE ?? 'fullstack_studies',
-      entities: [__dirname + '/../**/*.entity.{js,ts}'],
       migrations: [__dirname + '/../migrations/*.{js,ts}'],
+      autoLoadEntities: true,
       synchronize: true,
       logging: true,
       logger: 'file',
+      // NÃO coloque subscribers aqui
     }),
   ],
-  controllers: [AppController, UserController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -21,8 +21,8 @@ export class UserController {
     description: 'método que vai retornar todos os users',
   })
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    return await this.usersService.findAll();
   }
 
   @Get(':id')

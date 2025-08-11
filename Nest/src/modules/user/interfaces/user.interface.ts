@@ -4,11 +4,15 @@
 // até em tempo de compilação.
 
 export interface UserInterface {
+  id: string;
   firstName: string;
   lastName: string;
   username: string;
+  email: string;
   password: string;
   salt: string;
   active: boolean;
-  //userRoles?: UserRoleInterface[];
+  birthDate: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }

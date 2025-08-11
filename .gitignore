@@ -13,3 +13,4 @@ Nest/dist
 Nest/coverage
 Nest/src/.env
 Nest/.env
+Nest/ormlogs.log

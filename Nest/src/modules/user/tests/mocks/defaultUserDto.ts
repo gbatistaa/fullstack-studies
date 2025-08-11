@@ -1,6 +1,6 @@
 import { User } from '../../entities/user-entity';
 
-export const DefaultUserDto: User = {
+export const DefaultUserDto: Partial<User> = {
   username: 'default',
   firstName: 'default',
   lastName: 'default',
