@@ -3,7 +3,6 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserDTO } from './dto/user-dto';
-import { User } from './entities/user-entity';
 import { UserRepository } from './user.repository';
 
 // Services são os providers onde ficam a lógica de negócio do módulo
@@ -11,8 +10,6 @@ import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UsersService {
-  public users: User[];
-
   constructor(private userRepository: UserRepository) {}
 
   /**

@@ -1,6 +1,7 @@
-import { User } from '../../entities/user-entity';
+import { Role } from 'src/modules/role/entities/role-entity';
+import { UserDTO } from '../../dto/user-dto';
 
-export const DefaultUserDto: Partial<User> = {
+export const DefaultUserDto: UserDTO = {
   username: 'default',
   firstName: 'default',
   lastName: 'default',
@@ -9,4 +10,8 @@ export const DefaultUserDto: Partial<User> = {
   active: true,
   id: 'id',
   salt: 'salt',
+  birthDate: new Date(),
+  roles: [new Role()],
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };

@@ -1,5 +1,6 @@
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { UserDTO } from '../dto/user-dto';
 import { User } from '../entities/user-entity';
 import { UserRepository } from '../user.repository';
 import { UsersService } from '../user.service';
@@ -39,12 +40,16 @@ describe(UsersService, () => {
   });
 
   describe(UsersService.prototype.create.name, () => {
-    it('should create user correctly', () => {
+    it('should create user correctly', async () => {
       // Esse teste impede que a execução real da lógica do método create seja executada
       // Isso evitar alterar o banco de dados durante da fase de testes
-      jest.spyOn(repository, 'create').mockReturnValue(DefaultUserDto);
+      const dto = new Promise<UserDTO>(() => {
+        return DefaultUserDto;
+      });
 
-      const user = service.create(DefaultUserDto);
+      jest.spyOn(repository, 'create').mockReturnValue(dto);
+
+      const user = await service.create(DefaultUserDto);
       expect(user.username).toBe(DefaultUserDto.username);
       expect(user.id).toBeDefined();
     });
@@ -62,10 +67,14 @@ describe(UsersService, () => {
   });
 
   describe(UsersService.prototype.findOne.name, () => {
-    it('should find one user', () => {
-      jest.spyOn(repository, 'findOne').mockReturnValue(DefaultUserDto);
+    const dto = new Promise<UserDTO>(() => {
+      return DefaultUserDto;
+    });
 
-      const user: User = service.findOne(DefaultUserDto.id);
+    it('should find one user', async () => {
+      jest.spyOn(repository, 'findOne').mockReturnValue(dto);
+
+      const user: User = service.findOne((await dto).id);
 
       expect(user).toBe(DefaultUserDto);
       expect(user.id).toBe(DefaultUserDto.id);

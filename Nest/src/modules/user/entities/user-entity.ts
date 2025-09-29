@@ -9,6 +9,7 @@ import { UserInterface } from '../interfaces';
 @Entity({ schema: 'nestjs' })
 @Unique(['username'])
 @Unique(['email'])
+@Unique(['roles'])
 export class User extends CommonEntity implements UserInterface {
   @Column({ type: 'citext', nullable: false })
   username: string;
@@ -28,7 +29,7 @@ export class User extends CommonEntity implements UserInterface {
   @Column({ type: 'citext', nullable: false })
   email: string;
 
-  @Column({ type: 'date', default: new Date() })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   birthDate: Date;
 
   @Column({ default: true, nullable: false })

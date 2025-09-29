@@ -1,4 +1,5 @@
 import { Exclude, Expose } from 'class-transformer';
+import { Role } from 'src/modules/role/entities/role-entity';
 import { UserInterface } from '../interfaces';
 
 @Exclude()
@@ -24,4 +25,5 @@ export class UserDTO implements UserInterface {
   birthDate: Date;
   createdAt: Date;
   updatedAt: Date;
+  roles: Role;
 }

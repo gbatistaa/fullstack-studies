@@ -23,7 +23,6 @@ import { UsersModule } from './modules/user/users.module';
       synchronize: true,
       logging: true,
       logger: 'file',
-      // NÃO coloque subscribers aqui
     }),
   ],
   controllers: [AppController],
