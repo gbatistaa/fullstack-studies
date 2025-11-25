@@ -1,0 +1,7 @@
+**/Library/
+**/UserSettings/
+**/Temp/
+**/Logs/
+**/*.meta
+**/*.asset
+**/*.unity
